@@ -1,0 +1,334 @@
+ASSIGNMENT -01
+
+//1- Find the minimum value in an array
+
+
+
+#include <stdio.h>
+
+
+
+int main() {
+
+    int arr[100], n, i, min;
+
+
+
+    printf("Enter number of elements: ");
+
+    scanf("%d", &n);
+
+
+
+    printf("Enter %d elements: ", n);
+
+    for(i = 0; i < n; i++) {
+
+        scanf("%d", &arr[i]);
+
+    }
+
+
+
+    min = arr[0];  // assume first element is minimum
+
+
+
+    for(i = 1; i < n; i++) {
+
+        if(arr[i] < min)
+
+            min = arr[i];
+
+    }
+
+
+
+    printf("Minimum value in the array = %d", min);
+
+
+
+    return 0;
+
+}
+
+// Output: Enter number of elements:5 
+
+//Enter 5 elements: 10
+
+//45
+
+//64
+
+//26
+
+//05
+
+//Minimum value in the array = 5
+
+
+
+// 2- Find the minimum value in an array to Find the minimum value in an array
+
+
+
+#include <stdio.h>
+
+
+
+int findMin(int arr[], int n) {
+
+    int min = arr[0];  // Assume first element is minimum
+
+    for (int i = 1; i < n; i++) {
+
+        if (arr[i] < min) {
+
+            min = arr[i];  // Update min if current element is smaller
+
+        }
+
+    }
+
+    return min;
+
+}
+
+
+
+int main() {
+
+    int arr[] = {5, 2, 7, 6};
+
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+
+
+    int minimum = findMin(arr, n);
+
+    printf("Minimum value in the array is: %d\n", minimum);
+
+
+
+    return 0;
+
+}
+
+// Output: Minimum value in the array is: 2
+
+
+
+//3-Find the second minimum value in an array
+
+
+
+#include <stdio.h>
+
+#include <limits.h>
+
+
+
+int main() {
+
+    int arr[100], n, i;
+
+    int firstMin = INT_MAX, secondMin = INT_MAX;
+
+
+
+    printf("Enter number of elements: ");
+
+    scanf("%d", &n);
+
+
+
+    printf("Enter %d elements: ", n);
+
+    for(i = 0; i < n; i++) {
+
+        scanf("%d", &arr[i]);
+
+    }
+
+
+
+    for(i = 0; i < n; i++) {
+
+        if(arr[i] < firstMin) {
+
+            secondMin = firstMin;
+
+            firstMin = arr[i];
+
+        } 
+
+        else if(arr[i] < secondMin && arr[i] != firstMin) {
+
+            secondMin = arr[i];
+
+        }
+
+    }
+
+
+
+    printf("Second minimum value = %d", secondMin);
+
+
+
+    return 0;
+
+}
+
+//Output: Enter number of elements: 5
+
+//Enter 5 elements: 10
+
+//25
+
+//56
+
+//54
+
+//9
+
+//Second minimum value = 10
+
+//4-How you will rotate an array using C
+
+
+
+#include <stdio.h>
+
+
+
+Int main() {
+
+    Int arr[100], n, i, last;
+
+
+
+    Printf(“Enter number of elements: “);
+
+    Scanf(“%d”, &n);
+
+
+
+    Printf(“Enter %d elements: “, n);
+
+    For(i = 0; i < n; i++) {
+
+        Scanf(“%d”, &arr[i]);
+
+    }
+
+
+
+    Last = arr[n-1];
+
+    For(i = n-1; i > 0; i--) {
+
+        Arr[i] = arr[i-1];
+
+    }
+
+    Arr[0] = last;
+
+
+
+    Printf(“Array after one rotation to the right:\n”);
+
+    For(i = 0; i < n; i++) {
+
+        Printf(“%d “, arr[i]);
+
+    }
+
+
+
+    Return 0;
+
+}
+
+//Output: Enter number of elements: 5
+
+//Enter 5 elements: 10
+
+//35
+
+//32
+
+//23
+
+//65
+
+//Array after one rotation to the right:
+
+//65 10 35 32 23 
+
+//5- Implement 4×4 matrix position display
+
+
+
+#include <stdio.h>
+
+
+
+int main() {
+
+    int matrix[4][4];
+
+    int i, j;
+
+
+
+    printf("Enter 16 elements for 4x4 matrix:\n");
+
+    for(i = 0; i < 4; i++) {
+
+        for(j = 0; j < 4; j++) {
+
+            scanf("%d", &matrix[i][j]);
+
+        }
+
+    }
+
+
+
+    printf("\nMatrix with positions:\n");
+
+    for(i = 0; i < 4; i++) {
+
+        for(j = 0; j < 4; j++) {
+
+            printf("matrix[%d][%d] = %d\t", i, j, matrix[i][j]);
+
+        }
+
+        printf("\n");
+
+    }
+
+
+
+    return 0;
+
+}
+
+// Output:Enter 16 elements for 4x4 matrix:
+
+//34 56 32 12 10 6 7 54 23 28 98 67 33 66 87 88
+
+
+
+// Matrix with positions:
+
+//matrix[0][0] = 34	matrix[0][1] = 56	matrix[0][2] = 32	matrix[0][3] = 12	
+
+//matrix[1][0] = 10	matrix[1][1] = 6	matrix[1][2] = 7	matrix[1][3] = 54	
+
+//matrix[2][0] = 23	matrix[2][1] = 28	matrix[2][2] = 98	matrix[2][3] = 67	
+
+//matrix[3][0] = 33	matrix[3][1] = 66	matrix[3][2] = 87	matrix[3][3] = 88 
+
