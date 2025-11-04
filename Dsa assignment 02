@@ -1,0 +1,398 @@
+//Q1. Find the element using Linear Search
+
+
+
+#include <stdio.h>
+
+
+
+int main() {
+
+    int arr[] = {7, 9, 12, 6, 5, 4};
+
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    int target = 8, i, found = 0;
+
+
+
+    for(i = 0; i < n; i++) {
+
+        if(arr[i] == target) {
+
+            printf("Element %d found at position %d\n", target, i + 1);
+
+            found = 1;
+
+            break;
+
+        }
+
+    }
+
+
+
+    if(!found)
+
+        printf("Element %d not found in the array\n", target);
+
+
+
+    return 0;
+
+}
+
+// Output: Element 8 not found in the array
+
+
+
+//Q2. Find the element using Binary Search
+
+
+
+#include <stdio.h>
+
+
+
+Int main() {
+
+    Int arr[] = {6, 6, 7, 7, 8, 9, 12, 14, 15, 18, 19, 20, 21};
+
+    Int n = sizeof(arr) / sizeof(arr[0]);
+
+    Int target = 18;
+
+    Int low = 0, high = n – 1, mid, found = 0;
+
+
+
+    While(low <= high) {
+
+        Mid = (low + high) / 2;
+
+        If(arr[mid] == target) {
+
+            Printf(“Element %d found at position %d\n”, target, mid + 1);
+
+            Found = 1;
+
+            Break;
+
+        } else if(arr[mid] < target)
+
+            Low = mid + 1;
+
+        Else
+
+            High = mid – 1;
+
+    }
+
+
+
+    If(!found)
+
+        Printf(“Element %d not found in the array\n”, target);
+
+
+
+    Return 0;
+
+}
+
+// Output: Element 18 found at position 10
+
+
+
+//Q3. Implement Quick Sort
+
+
+
+#include <stdio.h>
+
+
+
+Void swap(int *a, int *b) {
+
+    Int temp = *a;
+
+    *a = *b;
+
+    *b = temp;
+
+}
+
+
+
+Int partition(int arr[], int low, int high) {
+
+    Int pivot = arr[high];
+
+    Int i = (low – 1);
+
+    For(int j = low; j < high; j++) {
+
+        If(arr[j] < pivot) {
+
+            I++;
+
+            Swap(&arr[i], &arr[j]);
+
+        }
+
+    }
+
+    Swap(&arr[i + 1], &arr[high]);
+
+    Return (i + 1);
+
+}
+
+
+
+Void quickSort(int arr[], int low, int high) {
+
+    If(low < high) {
+
+        Int pi = partition(arr, low, high);
+
+        quickSort(arr, low, pi – 1);
+
+        quickSort(arr, pi + 1, high);
+
+    }
+
+}
+
+
+
+Int main() {
+
+    Int arr[] = {12, 18, 21, 4, 6, 22, 23, 2, 1};
+
+    Int n = sizeof(arr) / sizeof(arr[0]);
+
+
+
+    quickSort(arr, 0, n – 1);
+
+
+
+    printf(“Array after Quick Sort:\n”);
+
+    for(int i = 0; i < n; i++)
+
+        printf(“%d “, arr[i]);
+
+
+
+    return 0;
+
+}
+
+// Output: Array after Quick Sort:
+
+//1 2 4 6 12 18 21 22 23 
+
+
+
+//Q4. Implement Merge Sort
+
+
+
+#include <stdio.h>
+
+
+
+Void merge(int arr[], int l, int m, int r) {
+
+    Int n1 = m – l + 1;
+
+    Int n2 = r – m;
+
+    Int L[n1], R[n2];
+
+
+
+    For(int i = 0; i < n1; i++)
+
+        L[i] = arr[l + i];
+
+    For(int j = 0; j < n2; j++)
+
+        R[j] = arr[m + 1 + j];
+
+
+
+    Int i = 0, j = 0, k = l;
+
+    While(i < n1 && j < n2) {
+
+        If(L[i] <= R[j])
+
+            Arr[k++] = L[i++];
+
+        Else
+
+            Arr[k++] = R[j++];
+
+    }
+
+
+
+    While(i < n1) arr[k++] = L[i++];
+
+    While(j < n2) arr[k++] = R[j++];
+
+}
+
+
+
+Void mergeSort(int arr[], int l, int r) {
+
+    If(l < r) {
+
+        Int m = (l + r) / 2;
+
+        mergeSort(arr, l, m);
+
+        mergeSort(arr, m + 1, r);
+
+        merge(arr, l, m, r);
+
+    }
+
+}
+
+
+
+Int main() {
+
+    Int arr[] = {4, 14, 28, 30, 78, 81, 21, 1, 0, 6};
+
+    Int n = sizeof(arr) / sizeof(arr[0]);
+
+
+
+    mergeSort(arr, 0, n – 1);
+
+
+
+    printf(“Array after Merge Sort:\n”);
+
+    for(int i = 0; i < n; i++)
+
+        printf(“%d “, arr[i]);
+
+
+
+    return 0;
+
+}
+
+// Output: Array after Merge Sort:
+
+//0 1 4 6 14 21 28 30 78 81 
+
+
+
+//Q5. Using Selection Sort & Search Target Element
+
+#include <stdio.h>
+
+
+
+Void selectionSort(int arr[], int n) {
+
+    Int i, j, min, temp;
+
+    For(i = 0; i < n-1; i++) {
+
+        Min = i;
+
+        For(j = i+1; j < n; j++) {
+
+            If(arr[j] < arr[min])
+
+                Min = j;
+
+        }
+
+        Temp = arr[min];
+
+        Arr[min] = arr[i];
+
+        Arr[i] = temp;
+
+    }
+
+}
+
+
+
+Int linearSearch(int arr[], int n, int target) {
+
+    For(int i = 0; i < n; i++) {
+
+        If(arr[i] == target)
+
+            Return i;
+
+    }
+
+    Return -1;
+
+}
+
+
+
+Int main() {
+
+    Int arr[] = {5, 12, 14, 16, 17, 21, 15, 4, 3, 0};
+
+    Int n = sizeof(arr) / sizeof(arr[0]);
+
+    Int target = 15;
+
+
+
+    selectionSort(arr, n);
+
+
+
+    printf(“Array after Selection Sort:\n”);
+
+    for(int i = 0; i < n; i++)
+
+        printf(“%d “, arr[i]);
+
+    printf(“\n”);
+
+
+
+    int pos = linearSearch(arr, n, target);
+
+
+
+    if(pos != -1)
+
+        printf(“Element %d found at position %d\n”, target, pos + 1);
+
+    else
+
+        printf(“Element %d not found\n”, target);
+
+
+
+    return 0;
+
+}
+
+// Output: Array after Selection Sort:
+
+// 0 3 4 5 12 14 15 16 17 21 
+
+//Element 15 found at position 7
+
+
+
